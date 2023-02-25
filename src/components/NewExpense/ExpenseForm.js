@@ -29,18 +29,22 @@ const ExpenseForm = () => {
 
     const amountChangeHandler = e => {
         // setEnteredAmount(e.target.value)
-        setUserInput({
-            ...userInput,
-            enteredAmount: e.target.value,
+        setUserInput(prevState => {
+            return {
+                ...prevState,
+                enteredAmount: e.target.value
+            }
         })
 
     }
 
     const dateChangeHandler = e => {
         // setEnteredDate(e.target.value)
-        setUserInput({
-            ...userInput,
-            enteredDate: e.target.value,
+        setUserInput(prevState => {
+            return {
+                ...prevState,
+                enteredAmount: e.target.value
+            }
         })
     }
 
