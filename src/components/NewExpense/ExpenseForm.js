@@ -6,6 +6,7 @@ const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState('');
   const [enteredAmount, setEnteredAmount] = useState('');
   const [enteredDate, setEnteredDate] = useState('');
+  const [formVisibility, setFormVisibility] = useState(props.formVisibility)
   // const [userInput, setUserInput] = useState({
   //   enteredTitle: '',
   //   enteredAmount: '',
@@ -39,6 +40,11 @@ const ExpenseForm = (props) => {
     // });
   };
 
+  const formVisibilityHandler = () => {
+    setFormVisibility(formVisibility)
+    props.onExpenseFormVisibility(formVisibility)
+  }
+
   const submitHandler = (event) => {
     event.preventDefault();
 
@@ -49,9 +55,10 @@ const ExpenseForm = (props) => {
     };
 
     props.onSaveExpenseData(expenseData);
-    setEnteredTitle('');
-    setEnteredAmount('');
-    setEnteredDate('');
+    setEnteredTitle('')
+    setEnteredAmount('')
+    setEnteredDate('')
+    formVisibilityHandler()
   };
 
   return (
@@ -87,6 +94,7 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className='new-expense__actions'>
+        <button onClick={formVisibilityHandler}>Cancel</button>
         <button type='submit'>Add Expense</button>
       </div>
     </form>

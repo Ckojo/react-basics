@@ -1,14 +1,11 @@
 import React from 'react';
-import Card from '../UI/Card';
 
 import ExpenseItem from "./ExpenseItem";
 import './ExpensesList.css';
 
 const ExpensesList = props => {
     if (props.items.length === 0) {
-        return <Card className='empty-content'>
-            <h2 className='expenses-list__fallback'>Found no expenses.</h2>
-        </Card>
+        return <h2>Found no expenses.</h2>
     }
 
     return (
@@ -16,7 +13,7 @@ const ExpensesList = props => {
             {
                 props.items.map((item) => {
                     return (
-                        <li>
+                        <li key={item.id}>
                             <ExpenseItem
                                 key={item.id}
                                 title={item.title}
